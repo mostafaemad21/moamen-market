@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>استاند سوبر ماركت مؤمن — جاهز للطباعة</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/stand.css" />
+  </head>
+  <body>
+    <div class="toolbar no-print">
+      <div class="toolbar-in">
+        <strong>استاند NFC — عمودي رفيع</strong>
+        <span>مقاس الكارت ١٠ × ٢٠ سم · اطبع على ورق مقوى ٣٠٠ جم واقطع على الخط المتقطع</span>
+        <button type="button" id="printBtn">🖨️ اطبع</button>
+      </div>
+    </div>
+
+    <main class="sheet">
+      <!-- ================= الوش القدام ================= -->
+      <section class="card card-front" aria-label="الوش القدام من الاستاند">
+        <div class="glow g1" aria-hidden="true"></div>
+        <div class="glow g2" aria-hidden="true"></div>
+
+        <header class="c-head">
+          <div class="c-mark" aria-hidden="true">
+            <svg viewBox="0 0 512 512">
+              <path
+                d="M176 214c0-46 36-82 80-82s80 36 80 82"
+                fill="none"
+                stroke="#0b4433"
+                stroke-width="26"
+                stroke-linecap="round"
+              />
+              <path
+                d="M112 214h288l-31 172a46 46 0 0 1-45.5 38H188.5A46 46 0 0 1 143 386Z"
+                fill="#0b4433"
+              />
+              <path
+                d="M206 258v96M256 258v96M306 258v96"
+                stroke="#f7f2e7"
+                stroke-width="17"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div class="c-brand">
+            <span class="c-name">سوبر ماركت مؤمن</span>
+            <span class="c-sub">كل احتياجات بيتك في مكان واحد</span>
+          </div>
+        </header>
+
+        <div class="c-main">
+          <div class="nfc" aria-hidden="true">
+            <span class="ring r1"></span>
+            <span class="ring r2"></span>
+            <span class="ring r3"></span>
+            <svg viewBox="0 0 24 24" class="nfc-icon">
+              <path d="M6.5 8.5a6 6 0 0 1 0 7" />
+              <path d="M9.5 6a10 10 0 0 1 0 12" />
+              <path d="M12.5 3.5a14 14 0 0 1 0 17" />
+              <circle cx="3.6" cy="12" r="1.6" class="dot" />
+            </svg>
+          </div>
+
+          <h1>قرّب موبايلك<br />من الاستاند</h1>
+          <p class="c-lead">الأقسام، الموقع على الخريطة، وطرق الدفع… كلها في ثانية.</p>
+
+          <div class="qr-box">
+            <img id="qrImg" alt="كود QR لفتح صفحة سوبر ماركت مؤمن" width="200" height="200" />
+          </div>
+          <span class="qr-cap">أو امسح الكود بكاميرا الموبايل</span>
+        </div>
+
+        <footer class="c-foot">
+          <div class="pills">
+            <span>🛒 أقسام كاملة</span>
+            <span>💳 دفع أونلاين</span>
+          </div>
+          <p class="tap">TAP&nbsp;•&nbsp;NFC</p>
+        </footer>
+      </section>
+
+      <!-- ================= الوش الوراني ================= -->
+      <section class="card card-back" aria-label="الوش الوراني من الاستاند">
+        <header class="c-head">
+          <div class="c-mark" aria-hidden="true">
+            <svg viewBox="0 0 512 512">
+              <path
+                d="M176 214c0-46 36-82 80-82s80 36 80 82"
+                fill="none"
+                stroke="#0b4433"
+                stroke-width="26"
+                stroke-linecap="round"
+              />
+              <path
+                d="M112 214h288l-31 172a46 46 0 0 1-45.5 38H188.5A46 46 0 0 1 143 386Z"
+                fill="#0b4433"
+              />
+              <path
+                d="M206 258v96M256 258v96M306 258v96"
+                stroke="#f7f2e7"
+                stroke-width="17"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div class="c-brand">
+            <span class="c-name">سوبر ماركت مؤمن</span>
+            <span class="c-sub">كل احتياجات بيتك في مكان واحد</span>
+          </div>
+        </header>
+
+        <div class="b-main">
+          <h2>ادفع بسهولة</h2>
+          <div class="b-pay" id="bPay"></div>
+
+          <h2>تابعنا</h2>
+          <div class="b-social" id="bSocial"></div>
+
+          <h2>تواصل معانا</h2>
+          <div class="b-contact" id="bContact"></div>
+        </div>
+
+        <footer class="c-foot b-foot">
+          <p class="b-thanks">شكرًا لزيارتك 💚</p>
+          <p class="tap dark">MOAMEN&nbsp;MARKET</p>
+        </footer>
+      </section>
+    </main>
+
+    <p class="hint no-print">
+      💡 لصق شريحة الـ NFC في منتصف الكارت من ورا (على ارتفاع ٧–٩ سم من الأرض) — الوش
+      القدام للعميل والوش الوراني فيه الدفع والتواصل.
+    </p>
+
+    <script src="assets/js/config.js"></script>
+    <script>
+      (function () {
+        var S = window.SITE || {};
+        var params = new URLSearchParams(location.search);
+        var override = params.get("url");
+        var target = override || S.siteUrl || location.href.replace(/stand\.html.*$/, "");
+
+        var qr = document.getElementById("qrImg");
+        var apiSrc =
+          "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=0&color=0b4433&bgcolor=ffffff&data=" +
+          encodeURIComponent(target);
+
+        // الافتراضي: صورة QR محلية جاهزة (بتشتغل من غير نت وقت الطباعة)
+        qr.src = override ? apiSrc : "assets/img/qr.png";
+        qr.addEventListener("error", function () {
+          if (qr.src.indexOf("qr.png") > -1) {
+            qr.src = apiSrc;
+            return;
+          }
+          var box = qr.parentNode;
+          box.innerHTML = '<span class="qr-fallback">' + target + "</span>";
+        });
+
+        document.getElementById("printBtn").addEventListener("click", function () {
+          window.print();
+        });
+
+        // الوش الوراني: الدفع
+        var pay = (S.payments || []).filter(function (p) { return p.active; }).slice(0, 3);
+        document.getElementById("bPay").innerHTML = pay
+          .map(function (p) {
+            return (
+              '<div class="b-row">' +
+              '<span class="b-logo" style="background:' + (p.color || "#0f5a41") + '">' +
+              (p.logo || p.name.charAt(0)) +
+              "</span>" +
+              '<span class="b-row-main"><b>' + p.name + "</b><i>" + (p.note || "") + "</i></span>" +
+              "</div>"
+            );
+          })
+          .join("");
+
+        // الوش الوراني: السوشيال
+        var soc = S.socials || [];
+        document.getElementById("bSocial").innerHTML = soc
+          .map(function (s) {
+            return (
+              '<span class="b-chip">' + s.name + (s.soon || !s.url ? " · قريبًا" : "") + "</span>"
+            );
+          })
+          .join("");
+
+        // الوش الوراني: التواصل
+        var items = [];
+        if (S.phone) items.push(["📞", S.phone]);
+        if (S.address) items.push(["📍", S.address + (S.city ? " — " + S.city : "")]);
+        if (S.hoursText) items.push(["🕗", S.hoursText]);
+        document.getElementById("bContact").innerHTML = items
+          .map(function (it) {
+            return (
+              '<div class="b-row"><span class="b-emoji">' + it[0] + "</span>" +
+              '<span class="b-row-main"><b>' + it[1] + "</b></span></div>"
+            );
+          })
+          .join("");
+
+        var nameEl = document.querySelector(".card-front .c-name");
+        if (nameEl && S.name) nameEl.textContent = S.name;
+      })();
+    </script>
+  </body>
+</html>
