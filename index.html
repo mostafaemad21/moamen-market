@@ -1,124 +1,349 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ماركت مؤمن</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f6f7f2;--card:#ffffff;--ink:#14201a;--mute:#5d6a62;--line:#dfe3da;--accent:#1f7a45;--accent-ink:#fff;--shadow:rgba(20,32,26,.08);
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c0f0d;--card:#161b18;--ink:#f2f5f0;--mute:#9aa69e;--line:#27302b;--accent:#3cc77a;--accent-ink:#06210f;--shadow:rgba(0,0,0,.4)}}
-:root[data-theme="dark"]{--bg:#0c0f0d;--card:#161b18;--ink:#f2f5f0;--mute:#9aa69e;--line:#27302b;--accent:#3cc77a;--accent-ink:#06210f;--shadow:rgba(0,0,0,.4)}
-*{box-sizing:border-box;margin:0}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,Arial,sans-serif;min-height:100vh;display:flex;justify-content:center}
-main{width:100%;max-width:460px;padding:28px 18px 36px}
-header{text-align:center;padding:10px 0 26px}
-.mark{width:84px;height:84px;border-radius:26px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:44px;font-weight:900;margin:0 auto 14px;transform:rotate(-6deg)}
-h1{font-size:32px;font-weight:900;line-height:1.2}
-header p{color:var(--mute);margin-top:6px;font-size:16px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.item{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 10px 14px;display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:inherit;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 2px 8px var(--shadow);transition:transform .15s}
-.item:active{transform:scale(.97)}
-.item:focus-visible,.copy:focus-visible,.close:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.item svg{width:56px;height:56px}
-.item small{color:var(--mute);font-weight:500;font-size:13px;margin-top:-6px}
-h2{font-size:15px;color:var(--mute);font-weight:700;margin:26px 4px 10px}
-.note{margin-top:24px;border:1.5px solid var(--line);border-radius:999px;padding:12px 16px;text-align:center;font-weight:700;font-size:15px}
-.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;z-index:9}
-.sheet-bg.open{display:flex}
-.sheet{background:var(--card);width:100%;max-width:460px;border-radius:26px 26px 0 0;padding:24px 20px calc(24px + env(safe-area-inset-bottom,0px));text-align:center}
-.sheet h3{font-size:22px;font-weight:900}
-.sheet p{color:var(--mute);margin:6px 0 16px}
-.num{font-size:26px;font-weight:900;letter-spacing:1px;direction:ltr;background:var(--bg);border-radius:14px;padding:14px;word-break:break-all}
-.copy,.close{display:block;width:100%;margin-top:12px;border:0;border-radius:14px;padding:14px;font:inherit;font-weight:900;font-size:17px;cursor:pointer}
-.copy{background:var(--accent);color:var(--accent-ink)}
-.close{background:transparent;color:var(--mute);font-weight:700}
-.info{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:6px 16px}
-.row{display:flex;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line)}
-.row:last-child{border:0}
-.row b{min-width:64px;color:var(--mute);font-weight:700;font-size:14px}
-.row span{font-weight:700;font-size:16px}
-header{background:linear-gradient(160deg,#0f4a28,#1f7a45 65%,#3cc77a);color:#fff;border-radius:30px;padding:30px 18px 24px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(31,122,69,.35)}
-header::before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08);top:-90px;left:-70px}
-header::after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.07);bottom:-60px;right:-40px}
-header>*{position:relative;z-index:1}
-.mark{background:#fff;color:#0f4a28;box-shadow:0 8px 20px rgba(0,0,0,.25)}
-header p{color:rgba(255,255,255,.88)}
-.badge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:rgba(0,0,0,.25);border-radius:999px;padding:7px 16px;font-weight:700;font-size:14px}
-.badge i{width:9px;height:9px;border-radius:50%;background:#ff6b6b}
-.badge.on i{background:#5dff9a;box-shadow:0 0 0 4px rgba(93,255,154,.25)}
-.item{border-radius:24px;padding:20px 10px 16px}
-.item svg{filter:drop-shadow(0 4px 6px rgba(0,0,0,.18))}
-#pay .item{border:2px solid var(--accent)}
-@media(hover:hover){.item:hover{transform:translateY(-3px)}}
-main>.grid .item{animation:in .5s both}
-main>.grid .item:nth-child(2){animation-delay:.06s}main>.grid .item:nth-child(3){animation-delay:.12s}main>.grid .item:nth-child(4){animation-delay:.18s}
-@keyframes in{from{opacity:0;transform:translateY(14px)}}
-@media(prefers-reduced-motion:reduce){main>.grid .item{animation:none}}
-</style>
-</head>
-<body>
-<main>
-<header>
-  <div class="mark">م</div>
-  <h1>ماركت مؤمن</h1>
-  <p>تواصل بسرعة وسهولة</p>
-  <span class="badge" id="bd"><i></i><span id="bt"></span></span>
-</header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>سوبر ماركت مؤمن | كل احتياجات بيتك في مكان واحد</title>
+    <meta
+      name="description"
+      content="سوبر ماركت مؤمن — خضار وفواكه طازة، ألبان وأجبان، لحوم ودواجن وبقالة كاملة. ادفع بإنستاباي أو فودافون كاش، وشوف مكاننا على الخريطة."
+    />
+    <meta name="theme-color" content="#0b4433" />
+    <meta name="color-scheme" content="light" />
 
-<div class="grid" id="contact"></div>
-<h2>الدفع والتحويل</h2>
-<div class="grid" id="pay"></div>
-<div class="info">
-  <div class="row"><b>العنوان</b><span>ادفو - مصنع السكر - مؤمن ماركت</span></div>
-  <div class="row"><b>المواعيد</b><span>من 7 صباحًا إلى 1 صباحًا (تاني يوم)</span></div>
-</div>
-<div class="note">يرجى إظهار شاشة الدفع بعد التحويل</div>
-</main>
-<script>
-const CONFIG = {
-  phone: "01111177487",
-  whatsapp: "201111177486",
-  maps: "https://maps.app.goo.gl/Q65ktcXpuxqyv25f9?g_st=ac",
-  website: "https://mostafaemad21.github.io/moamen-market/",
-  instapay: "https://ipn.eg/S/mo2a94/instapay/0HHmDK",
-  vodafone: "http://vf.eg/vfcash?id=mt&qrId=dAqxpC",
-  /* اتركها فاضية لحد ما تتوفر: */
-  facebook: "", instagram: "", tiktok: "", reviews: ""
-};
-const svg = (bg, inner) => `<svg viewBox="0 0 56 56" aria-hidden="true">${bg}${inner}</svg>`;
-const ICONS = {
-  phone: svg('<circle cx="28" cy="28" r="28" fill="#1f7a45"/>','<path d="M19 14l5 1 2 7-3 2c2 4 4 6 8 8l2-3 7 2 1 5c0 3-3 5-6 5-11-1-20-10-21-21 0-3 2-6 5-6z" fill="#fff"/>'),
-  facebook: svg('<circle cx="28" cy="28" r="28" fill="#1877f2"/>','<path d="M31 46V30h5l1-6h-6v-4c0-2 1-3 3-3h3v-5h-5c-5 0-7 3-7 7v5h-5v6h5v16z" fill="#fff"/>'),
-  instagram: svg('<defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".4" stop-color="#fa7e1e"/><stop offset=".7" stop-color="#d62976"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs><rect width="56" height="56" rx="16" fill="url(#ig)"/>','<rect x="14" y="14" width="28" height="28" rx="8" fill="none" stroke="#fff" stroke-width="3"/><circle cx="28" cy="28" r="6.5" fill="none" stroke="#fff" stroke-width="3"/><circle cx="36.5" cy="19.5" r="2" fill="#fff"/>'),
-  tiktok: svg('<circle cx="28" cy="28" r="28" fill="#000"/>','<path d="M30 15v16a5 5 0 1 1-5-5" fill="none" stroke="#25f4ee" stroke-width="4" stroke-linecap="round" transform="translate(-1.5 1)"/><path d="M30 15v16a5 5 0 1 1-5-5m5-11c1 4 3 6 8 6" fill="none" stroke="#fe2c55" stroke-width="4" stroke-linecap="round" transform="translate(1.5 -1)"/><path d="M30 15v16a5 5 0 1 1-5-5m5-11c1 4 3 6 8 6" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>'),
-  whatsapp: svg('<circle cx="28" cy="28" r="28" fill="#25d366"/>','<path d="M28 13a15 15 0 0 0-13 22l-2 8 8-2a15 15 0 1 0 7-28z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><path d="M22 21c0 7 6 13 13 13l2-3-4-2-2 1c-2-1-4-3-5-5l1-2-2-4z" fill="#fff"/>'),
-  maps: svg('<circle cx="28" cy="28" r="28" fill="#fff" stroke="#dadce0"/>','<path d="M28 9a12 12 0 0 0-12 12c0 9 12 26 12 26s12-17 12-26A12 12 0 0 0 28 9z" fill="#ea4335"/><path d="M16 21a12 12 0 0 1 6-10l6 10z" fill="#4285f4"/><path d="M40 21a12 12 0 0 0-3-8l-9 8z" fill="#fbbc04"/><circle cx="28" cy="21" r="5" fill="#fff"/>'),
-  reviews: svg('<circle cx="28" cy="28" r="28" fill="#fff" stroke="#dadce0"/>','<text x="28" y="35" text-anchor="middle" font-family="Arial" font-weight="700" font-size="30" fill="#4285f4">G</text><text x="28" y="48" text-anchor="middle" font-size="9" fill="#fbbc04">★★★★★</text>'),
-  website: svg('<circle cx="28" cy="28" r="28" fill="#4285f4"/>','<g fill="none" stroke="#fff" stroke-width="3"><circle cx="28" cy="28" r="15"/><ellipse cx="28" cy="28" rx="6.5" ry="15"/><path d="M13 28h30M16 20h24M16 36h24"/></g>'),
-  vodafone: svg('<circle cx="28" cy="28" r="28" fill="#e60000"/>','<circle cx="28" cy="28" r="14" fill="#fff"/><path d="M33 17c-6-1-11 3-11 9 0 7 5 11 10 10-4-1-6-4-6-8 0-5 3-8 7-11z" fill="#e60000"/>'),
-  instapay: svg('<rect width="56" height="56" rx="16" fill="#fff" stroke="#dadce0"/>','<path d="M10 15l14 13-14 13z" fill="#7b3fbf"/><path d="M24 15l14 13-14 13z" fill="#f58220"/><path d="M38 15l9 13-9 13z" fill="#f58220" opacity=".55"/>')
-};
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_EG" />
+    <meta property="og:title" content="سوبر ماركت مؤمن" />
+    <meta
+      property="og:description"
+      content="كل احتياجات بيتك في مكان واحد — طازة كل يوم وبسعر كويس."
+    />
+    <meta property="og:image" content="assets/img/logo.svg" />
 
-const items = [
-  ["phone","اتصل بنا","tel:"+CONFIG.phone],
-  ["whatsapp","واتساب","https://wa.me/"+CONFIG.whatsapp],
-  ["maps","الخريطة",CONFIG.maps],
-  ["website","الموقع",CONFIG.website],
-  ["facebook","فيسبوك",CONFIG.facebook],
-  ["instagram","انستجرام",CONFIG.instagram],
-  ["tiktok","تيك توك",CONFIG.tiktok],
-  ["reviews","قيّمنا على جوجل",CONFIG.reviews]
-].filter(i=>i[2]);
-const pay = [["vodafone","فودافون كاش",CONFIG.vodafone],["instapay","إنستا باي",CONFIG.instapay]];
-const a = ([k,t,h]) => `<a class="item" href="${h}" ${h.startsWith('tel:')?'':'target="_blank" rel="noopener"'}>${ICONS[k]}<span>${t}</span></a>`;
-document.getElementById('contact').innerHTML = items.map(a).join('');
-document.getElementById('pay').innerHTML = pay.map(a).join('');
-const h=+new Intl.DateTimeFormat('en',{hour:'numeric',hour12:false,timeZone:'Africa/Cairo'}).format(new Date())%24;
-const on=h>=7||h<1;document.getElementById('bd').classList.toggle('on',on);
-document.getElementById('bt').textContent=on?'مفتوح الآن حتى 1 صباحًا':'مغلق الآن - نفتح 7 صباحًا';
-</script>
-</body>
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/img/logo.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "GroceryStore",
+        "name": "سوبر ماركت مؤمن",
+        "description": "سوبر ماركت يبيع الخضار والفواكه والألبان واللحوم والبقالة وكل مستلزمات البيت.",
+        "telephone": "+201111177487",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "الكلح غرب — جنب مصنع السكر",
+          "addressLocality": "إدفو، أسوان",
+          "addressCountry": "EG"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "07:00",
+          "closes": "01:00"
+        },
+        "paymentAccepted": "Cash, InstaPay, Vodafone Cash"
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">تخطى إلى المحتوى</a>
+
+    <!-- ================= أيقونات ================= -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"
+        />
+      </symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24">
+        <path
+          d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.18-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.7.62.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.28-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.88 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.17-1.24-6.16-3.48-8.41Z"
+        />
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+      </symbol>
+      <symbol id="i-share" viewBox="0 0 24 24">
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+        <path d="m16 6-4-4-4 4" />
+        <path d="M12 2v13" />
+      </symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24">
+        <rect x="9" y="9" width="13" height="13" rx="2.5" />
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path d="M20 6 9 17l-5-5" />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3.5 2" />
+      </symbol>
+      <symbol id="i-navigate" viewBox="0 0 24 24">
+        <path d="M3 11 21 2l-9 19-2-8-7-2Z" />
+      </symbol>
+      <symbol id="i-star" viewBox="0 0 24 24">
+        <path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9Z" />
+      </symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24">
+        <path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-4 16-9 16Z" />
+        <path d="M4 21c2-5 6-8 11-10" />
+      </symbol>
+      <symbol id="i-wallet" viewBox="0 0 24 24">
+        <path d="M20 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6" />
+        <path d="M16 13h2" />
+      </symbol>
+      <symbol id="i-user-plus" viewBox="0 0 24 24">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M19 8v6M22 11h-6" />
+      </symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24">
+        <rect x="2" y="2" width="20" height="20" rx="5.5" />
+        <circle cx="12" cy="12" r="4" />
+        <path d="M17.5 6.5h.01" />
+      </symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z" />
+      </symbol>
+      <symbol id="i-tiktok" viewBox="0 0 24 24">
+        <path
+          d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.4a6.8 6.8 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.9-4.4v-7a8.2 8.2 0 0 0 4.8 1.5V6.8a4.9 4.9 0 0 1-1-.1Z"
+        />
+      </symbol>
+      <symbol id="i-youtube" viewBox="0 0 24 24">
+        <rect x="2" y="5" width="20" height="14" rx="4.5" />
+        <path d="m10.2 9.2 4.8 2.8-4.8 2.8Z" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+        <path d="M9 22V12h6v10" />
+      </symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24">
+        <circle cx="9" cy="21" r="1.4" />
+        <circle cx="19" cy="21" r="1.4" />
+        <path d="M2 2h3l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" />
+      </symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24">
+        <path d="M12 2.5 14.4 9 21 11.5 14.4 14 12 20.5 9.6 14 3 11.5 9.6 9Z" />
+      </symbol>
+    </svg>
+
+    <header class="hero">
+      <div class="hero-deco" aria-hidden="true"></div>
+
+      <div class="wrap topbar">
+        <div class="brand-mini">
+          <span class="brand-mini-mark">م</span>
+          <span class="brand-mini-name">سوبر ماركت مؤمن</span>
+        </div>
+        <span class="status-pill" id="statusPill" aria-live="polite">
+          <i class="dot"></i><span class="status-text">جاري التحقق…</span>
+        </span>
+      </div>
+
+      <div class="wrap hero-inner">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 512 512">
+            <path
+              d="M176 214c0-46 36-82 80-82s80 36 80 82"
+              fill="none"
+              stroke="#0b4433"
+              stroke-width="26"
+              stroke-linecap="round"
+            />
+            <path
+              d="M112 214h288l-31 172a46 46 0 0 1-45.5 38H188.5A46 46 0 0 1 143 386Z"
+              fill="#0b4433"
+            />
+            <path
+              d="M206 258v96M256 258v96M306 258v96"
+              stroke="#f7f2e7"
+              stroke-width="17"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+
+        <p class="hello">أهلاً بيك 👋</p>
+        <h1 id="siteName">سوبر ماركت مؤمن</h1>
+        <p class="tagline" id="tagline">
+          كل احتياجات بيتك في مكان واحد… طازة كل يوم وبسعر كويس.
+        </p>
+
+        <ul class="chips" id="chips">
+          <li>🥬 طازة يوميًا</li>
+          <li>🏷️ أسعار مناسبة</li>
+          <li>⚡ خدمة سريعة</li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ شبكة الأيقونات ============ -->
+      <section class="wrap hub" aria-labelledby="hubTitle">
+        <h2 class="hub-title" id="hubTitle">تابعنا وتواصل معانا</h2>
+        <div class="hub-grid" id="hubList"></div>
+      </section>
+
+      <!-- ============ الدفع ============ -->
+      <section class="wrap block" id="pay" aria-labelledby="payTitle">
+        <div class="sec-head">
+          <span class="sec-ic"><svg><use href="#i-wallet" /></svg></span>
+          <div>
+            <h2 class="sec-title" id="payTitle">ادفع بسهولة</h2>
+            <p class="sec-sub">حوّل في ثواني — اضغط على الوسيلة وانسخ الرقم</p>
+          </div>
+        </div>
+        <div class="panel" id="payList"></div>
+      </section>
+
+      <!-- ============ الموقع ============ -->
+      <section class="wrap block" id="location" aria-labelledby="locTitle">
+        <div class="sec-head">
+          <span class="sec-ic blue"><svg><use href="#i-pin" /></svg></span>
+          <div>
+            <h2 class="sec-title" id="locTitle">مكاننا على الخريطة</h2>
+            <p class="sec-sub" id="addrLine">العنوان</p>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <iframe
+            id="mapFrame"
+            title="موقع سوبر ماركت مؤمن على خريطة جوجل"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+          <div class="map-actions">
+            <a class="btn btn-primary" id="btnMap" href="#" target="_blank" rel="noopener">
+              <svg><use href="#i-navigate" /></svg> افتح في خرائط جوجل
+            </a>
+            <button class="btn btn-ghost" id="btnCopyAddr" type="button">
+              <svg><use href="#i-copy" /></svg> نسخ العنوان
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ الأقسام ============ -->
+      <section class="wrap block" id="categories" aria-labelledby="catTitle">
+        <div class="sec-head">
+          <span class="sec-ic green"><svg><use href="#i-cart" /></svg></span>
+          <div>
+            <h2 class="sec-title" id="catTitle">بنبيع إيه؟</h2>
+            <p class="sec-sub">كل حاجة البيت محتاجها… في مكان واحد</p>
+          </div>
+        </div>
+        <div class="cat-grid" id="catList"></div>
+      </section>
+
+      <!-- ============ ليه إحنا ============ -->
+      <section class="wrap block" id="why" aria-labelledby="whyTitle">
+        <div class="sec-head">
+          <span class="sec-ic amber"><svg><use href="#i-star" /></svg></span>
+          <div>
+            <h2 class="sec-title" id="whyTitle">ليه تشتري من عندنا؟</h2>
+          </div>
+        </div>
+        <div class="feature-list" id="featureList"></div>
+      </section>
+
+      <!-- ============ المواعيد ============ -->
+      <section class="wrap block" id="hours" aria-labelledby="hoursTitle">
+        <div class="sec-head">
+          <span class="sec-ic blue"><svg><use href="#i-clock" /></svg></span>
+          <div>
+            <h2 class="sec-title" id="hoursTitle">مواعيد العمل</h2>
+            <p class="sec-sub" id="hoursLine"></p>
+          </div>
+        </div>
+        <div class="panel hours-panel" id="hoursList"></div>
+      </section>
+
+      <!-- ============ عن المحل ============ -->
+      <section class="wrap block" id="about" aria-labelledby="aboutTitle">
+        <div class="sec-head">
+          <span class="sec-ic green"><svg><use href="#i-home" /></svg></span>
+          <div>
+            <h2 class="sec-title" id="aboutTitle">عن مؤمن</h2>
+          </div>
+        </div>
+        <div class="panel about-panel">
+          <p id="aboutText"></p>
+          <button class="btn btn-primary wide" id="btnVcard" type="button">
+            <svg><use href="#i-user-plus" /></svg> احفظ بيانات المحل على موبايلك
+          </button>
+        </div>
+      </section>
+
+      <noscript>
+        <div class="wrap block">
+          <div class="panel note">
+            <p>
+              لتشغيل كل خصائص الصفحة (نسخ الأرقام والخريطة) فعّل الجافاسكريبت.
+              للتواصل: <strong>01111177487</strong>
+            </p>
+          </div>
+        </div>
+      </noscript>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-brand">
+          <span class="brand-mini-mark">م</span>
+          <span>سوبر ماركت مؤمن</span>
+        </div>
+        <p class="foot-line">كل احتياجات بيتك في مكان واحد 🛒</p>
+        <p class="foot-copy">© <span id="year"></span> سوبر ماركت مؤمن — جميع الحقوق محفوظة</p>
+      </div>
+    </footer>
+
+    <!-- ============ شريط سفلي ============ -->
+    <nav class="tabbar" aria-label="تنقل سريع">
+      <div class="tabbar-inner">
+        <a class="tab is-active" href="#main" data-target="main">
+          <svg><use href="#i-home" /></svg><span>الرئيسية</span>
+        </a>
+        <a class="tab" href="#pay" data-target="pay">
+          <svg><use href="#i-wallet" /></svg><span>الدفع</span>
+        </a>
+        <a class="tab" href="#location" data-target="location">
+          <svg><use href="#i-pin" /></svg><span>الموقع</span>
+        </a>
+        <a class="tab" href="#categories" data-target="categories">
+          <svg><use href="#i-cart" /></svg><span>الأقسام</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span class="toast-ic"><svg><use href="#i-check" /></svg></span>
+      <span class="toast-text"></span>
+    </div>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
 </html>
