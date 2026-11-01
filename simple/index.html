@@ -73,7 +73,7 @@ main>.grid .item:nth-child(2){animation-delay:.06s}main>.grid .item:nth-child(3)
 <div class="grid" id="pay"></div>
 <div class="info">
   <div class="row"><b>العنوان</b><span>ادفو - مصنع السكر - مؤمن ماركت</span></div>
-  <div class="row"><b>المواعيد</b><span>من 7 صباحًا إلى 1 صباحًا (تاني يوم)</span></div>
+  <div class="row"><b>المواعيد</b><span>كل يوم من ٧ صباحًا حتى ١ بعد منتصف الليل</span></div>
 </div>
 <div class="note">يرجى إظهار شاشة الدفع بعد التحويل</div>
 </main>
@@ -84,7 +84,7 @@ const CONFIG = {
   maps: "https://maps.app.goo.gl/Q65ktcXpuxqyv25f9?g_st=ac",
   website: "https://mostafaemad21.github.io/moamen-market/",
   instapay: "https://ipn.eg/S/mo2a94/instapay/0HHmDK",
-  vodafone: "http://vf.eg/vfcash?id=mt&qrId=dAqxpC",
+  vodafone: "https://vf.eg/vfcash?id=mt&qrId=dAqxpC",
   /* اتركها فاضية لحد ما تتوفر: */
   facebook: "", instagram: "", tiktok: "", reviews: ""
 };
@@ -118,7 +118,7 @@ document.getElementById('contact').innerHTML = items.map(a).join('');
 document.getElementById('pay').innerHTML = pay.map(a).join('');
 const h=+new Intl.DateTimeFormat('en',{hour:'numeric',hour12:false,timeZone:'Africa/Cairo'}).format(new Date())%24;
 const on=h>=7||h<1;document.getElementById('bd').classList.toggle('on',on);
-document.getElementById('bt').textContent=on?'مفتوح الآن حتى 1 صباحًا':'مغلق الآن - نفتح 7 صباحًا';
+document.getElementById('bt').textContent=on?'مفتوح الآن حتى ١ بعد منتصف الليل':'مغلق الآن - نفتح ٧ صباحًا';
 </script>
 </body>
 </html>
