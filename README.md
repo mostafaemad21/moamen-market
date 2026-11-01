@@ -6,6 +6,15 @@
 
 مفيش أي برمجة معقدة ومفيش build — الموقع كله ملفات ثابتة تشتغل في أي متصفح.
 
+## 🔗 لينكات جاهزة
+
+| | |
+|---|---|
+| **الموقع (ده اللي في الـ NFC والـ QR)** | <https://mostafaemad21.github.io/moamen-market/> |
+| **الاستاند للطباعة (A4)** | <https://mostafaemad21.github.io/moamen-market/stand-print.pdf> |
+| **النسخة البسيطة** | <https://mostafaemad21.github.io/moamen-market/simple/> |
+| **الريبو** | <https://github.com/mostafaemad21/moamen-market> |
+
 ---
 
 ## 📁 الملفات
@@ -68,26 +77,16 @@ npx serve -l 5055
 
 ---
 
-## 🚀 النشر (مجانًا)
+## 🚀 النشر
 
-### الطريقة الأسهل — Netlify Drop
-1. افتح <https://app.netlify.com/drop>
-2. اسحب فولدر `moamen-market` كله وارميه في الصفحة
-3. هياخد رابط زي `https://moamen-market.netlify.app` — ده اللي هتحطه في `siteUrl`
+الموقع منشور بالفعل على **GitHub Pages**:
 
-### أو GitHub Pages
-```bash
-cd moamen-market
-git init
-git add .
-git commit -m "Moamen Market NFC page"
-git branch -M main
-git remote add origin https://github.com/USERNAME/moamen-market.git
-git push -u origin main
-```
-بعدين من الريبو: **Settings → Pages → Branch: main → Save**
+- الريبو: <https://github.com/mostafaemad21/moamen-market>
+- الموقع: <https://mostafaemad21.github.io/moamen-market/>
 
-> لازم الرابط يكون **HTTPS** عشان خاصية النسخ (Clipboard) تشتغل على الموبايل.
+أي تعديل: عدّل الملف → ارفعه على الريبو (أو `git push`) → GitHub Pages بيحدّث نفسه في دقيقة.
+
+> لازم الرابط يكون **HTTPS** عشان خاصية النسخ (Clipboard) تشتغل على الموبايل — و GitHub Pages بيوفّرها مجانًا.
 
 ---
 
@@ -95,7 +94,10 @@ git push -u origin main
 
 1. نزّل تطبيق **NFC Tools** (أندرويد / آيفون) — مجاني.
 2. اختار **Write** → **Add a record** → **URL / URI**.
-3. اكتب رابط الموقع (مثال `https://moamen-market.netlify.app`).
+3. اكتب بالظبط:
+   ```
+   https://mostafaemad21.github.io/moamen-market/
+   ```
 4. اختار **Write** وقرّب الموبايل من الشريحة لحد ما يظهر «Done».
 
 **نوع الشريحة المقترح:** NTAG213 أو NTAG215 (مقاومة للماء، لاصقة).
