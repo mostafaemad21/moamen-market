@@ -10,10 +10,12 @@
 
 | | |
 |---|---|
-| **الموقع (ده اللي في الـ NFC والـ QR)** | <https://mostafaemad21.github.io/moamen-market/> |
+| **البوابة — دي اللي في الـ QR والـ NFC** | <https://mostafaemad21.github.io/moamen-market/> |
+| **الصفحة الكبيرة** | <https://mostafaemad21.github.io/moamen-market/site/> |
 | **الاستاند للطباعة (A4)** | <https://mostafaemad21.github.io/moamen-market/stand-print.pdf> |
-| **النسخة البسيطة** | <https://mostafaemad21.github.io/moamen-market/simple/> |
 | **الريبو** | <https://github.com/mostafaemad21/moamen-market> |
+
+> **الترتيب:** الـ QR أو الـ NFC بيفتح **البوابة البسيطة** → العميل يدوس على «الموقع» → تفتح **الصفحة الكبيرة** (الأقسام + الخريطة + الدفع).
 
 ---
 
